@@ -1,22 +1,21 @@
 package team.dexter.CodeReviewerOrchestrationService.resources;
 
-import java.util.List;
-
-import javax.xml.ws.http.HTTPException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import team.dexter.CodeReviewerCommons.dtos.FeedbackDto;
 import team.dexter.CodeReviewerCommons.dtos.RevieweeCodeDto;
 import team.dexter.CodeReviewerCommons.dtos.RevieweeCodeRequestDto;
 import team.dexter.CodeReviewerOrchestrationService.exceptions.InternalServerError;
@@ -62,11 +61,12 @@ public class RevieweeCodeResource {
 	 * give feedback page lands here
 	 */
 	@PutMapping("/revieweeCode/{codeId}")
-	public List<RevieweeCodeDto> getRevieweeCode(@RequestParam String codeId) {
-		boolean result = restTemplate.getForObject(revieweeCodeServiceBaseUrl, Boolean.class);
-		if (!result) {
-			throw new HTTPException(HttpStatus.NOT_FOUND.value());
+	public void giveFeedback(@PathVariable String codeId, @RequestBody FeedbackDto feedbackDto) {
+		try {
+			String url = revieweeCodeServiceBaseUrl + "/revieweeCode/" + codeId;
+			restTemplate.exchange(url, HttpMethod.PUT, new HttpEntity<>(feedbackDto), Void.class);
+		} catch (Exception e) {
+			throw new InternalServerError();
 		}
-		return null;
 	}
 }
