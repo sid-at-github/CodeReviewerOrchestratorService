@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
 import team.dexter.CodeReviewerCommons.dtos.RevieweeDto;
+import team.dexter.CodeReviewerOrchestrationService.exceptions.ResourceExistException;
 import team.dexter.CodeReviewerOrchestrationService.exceptions.ResourceNotFoundException;
 
 @RestController
@@ -31,11 +33,16 @@ public class RevieweeResource {
 	 * sign up page lands here
 	 */
 	@PostMapping("/reviewee")
-	@ResponseStatus(value = HttpStatus.NO_CONTENT)
+	@ResponseStatus(value = HttpStatus.CREATED)
 	public void createReviewee(@RequestBody RevieweeDto revieweeDto) {
-		String url = revieweeServiceBaseUrl = "/reviewee";
-		boolean result = restTemplate.postForObject(url, revieweeDto, Boolean.class);
-		if (!result) {
+		String url = revieweeServiceBaseUrl + "/reviewee";
+		try {
+			restTemplate.postForObject(url, revieweeDto, Boolean.class);
+		} catch (HttpStatusCodeException e) {
+			if (e.getStatusCode() == HttpStatus.BAD_REQUEST) {
+				throw new ResourceExistException();
+			}
+		} catch (Exception e) {
 			throw new HTTPException(HttpStatus.INTERNAL_SERVER_ERROR.value());
 		}
 	}
