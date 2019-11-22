@@ -56,6 +56,20 @@ public class RevieweeCodeResource {
 			throw new InternalServerError();
 		}
 	}
+	
+	/*
+	 * code review page lands here
+	 */
+	@GetMapping("/revieweeCode/{codeId}")
+	public RevieweeCodeDto getRevieweeCode(@PathVariable String codeId) {
+		try {
+			String url = revieweeCodeServiceBaseUrl + "/revieweeCode/"+codeId;
+			ResponseEntity<RevieweeCodeDto> response = restTemplate.getForEntity(url, RevieweeCodeDto.class);
+			return response.getBody();
+		} catch (Exception e) {
+			throw new InternalServerError();
+		}
+	}
 
 	/*
 	 * give feedback page lands here

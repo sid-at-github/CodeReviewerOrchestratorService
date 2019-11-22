@@ -3,26 +3,38 @@
 <head>
     <meta charset ="utf-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>Upload Code</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="codes-list.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"/> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="index.js"></script>
+    <script src="codes-list.js"></script>
     <script src="../base-model.js"></script>
 </head>
 <body>
 
 <div class="topnav">
-  <a class="active" href="../home/home.html">Home</a>
-  <a id="upload" href="../upload/upload.html">Upload</a>
-  <a id="review" href="../codes-list/codes-list.html">Review Code Snippets</a>
-  <a id="logout" href="../login/login.html">Logout</a>
+  <a href="../home/home.html">Home</a>
+  <a href="../upload/upload.html">Upload</a>
+  <a class="active" href="../codes-list/codes-list.html">Review Code Snippets</a>
+  <a href="../login/login.html">Logout</a>
 </div>  
 <div class="content">
         <aside class="info ">
+        
                 <div class="box">
-                <h3><i>This is a code reviewer system. You can get your code reviewed by millions of users to find out the most efficient techniques to solve a problem according to the users.</br>You can also review codes of other users and help them find the most efficient techniques to code.</i></h3>
+                
+                <p class="title">
+                    <i class="fa fa-info-circle"></i>Code Snippets:
+                </p>
+                <label for="">
+                  <span>Search</span>
+                  <input type="text" id="searchText">
+                  <button onclick="searchCode()">Search</button>
+                </label>
+                <ul id="code_snippets" style="list-style: none; margin-top:60px">
+              
+            </ul>
             </div> 
 
 </aside>
