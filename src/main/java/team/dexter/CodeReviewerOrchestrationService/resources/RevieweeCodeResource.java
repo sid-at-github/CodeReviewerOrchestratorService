@@ -41,9 +41,9 @@ public class RevieweeCodeResource {
 	}
 
 	@GetMapping("/revieweeCode")
-	public RevieweeCodeDto[] getRevieweeCodeList(RevieweeCodeRequestDto info) {
+	public RevieweeCodeDto[] getRevieweeCodeList(RevieweeCodeRequestDto revieweeCodeRequestDto) {
 		try {
-			String url = revieweeCodeServiceBaseUrl + "/revieweeCode";
+			String url = revieweeCodeServiceBaseUrl + "/revieweeCode?tag=" + revieweeCodeRequestDto.getTag();
 			ResponseEntity<RevieweeCodeDto[]> response = restTemplate.getForEntity(url, RevieweeCodeDto[].class);
 			return response.getBody();
 		} catch (Exception e) {
