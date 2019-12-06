@@ -63,7 +63,7 @@ services:
                 aliases:
                     - revieweecodeservice
     code_reviewer_orchestration_service:
-        build: ./CodeReviewerOrchestrationService
+        build: .
         ports:
             - '9000:9000'
         expose:
