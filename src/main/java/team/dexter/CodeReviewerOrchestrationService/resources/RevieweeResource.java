@@ -28,9 +28,6 @@ public class RevieweeResource {
 	@Value("${reviewee.service.base.url}")
 	private String revieweeServiceBaseUrl;
 
-	/*
-	 * sign up page lands here
-	 */
 	@PostMapping("/reviewee")
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public void createReviewee(@RequestBody RevieweeDto revieweeDto) {
@@ -48,9 +45,6 @@ public class RevieweeResource {
 		}
 	}
 
-	/*
-	 * login page lands here
-	 */
 	@GetMapping("/reviewee")
 	public RevieweeDto[] getRevieweeList(HttpServletRequest request) {
 		String url = revieweeServiceBaseUrl + "/reviewee?" + request.getQueryString();

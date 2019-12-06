@@ -29,9 +29,6 @@ public class RevieweeCodeResource {
 	@Value("${revieweeCode.service.base.url}")
 	private String revieweeCodeServiceBaseUrl;
 
-	/*
-	 * upload code page lands here
-	 */
 	@PostMapping("/revieweeCode")
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public void createRevieweeCode(@RequestBody RevieweeCodeDto revieweeCodeDto) {
@@ -43,9 +40,6 @@ public class RevieweeCodeResource {
 		}
 	}
 
-	/*
-	 * code list page lands here
-	 */
 	@GetMapping("/revieweeCode")
 	public RevieweeCodeDto[] getRevieweeCodeList(RevieweeCodeRequestDto info) {
 		try {
@@ -57,9 +51,6 @@ public class RevieweeCodeResource {
 		}
 	}
 
-	/*
-	 * give feedback page lands here
-	 */
 	@PutMapping("/revieweeCode/{codeId}")
 	public void giveFeedback(@PathVariable String codeId, @RequestBody FeedbackDto feedbackDto) {
 		try {

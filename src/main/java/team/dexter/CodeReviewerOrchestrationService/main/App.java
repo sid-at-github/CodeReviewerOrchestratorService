@@ -8,10 +8,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Hello world!
- *
- */
 @SpringBootApplication
 @ComponentScan(basePackages = { "team.dexter.CodeReviewerOrchestrationService.resources" })
 public class App {
