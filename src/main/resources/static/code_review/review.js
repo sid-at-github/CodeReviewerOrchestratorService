@@ -16,7 +16,8 @@ window.onload = function() {
 				document.getElementById("code").innerHTML=data.code;
 				const list = document.getElementById("comments_list");
 				list.innerHTML = data.feedbacks.map(e => `<li id=’${e.comment} >Comment: ${e.comment}</li>
-						<li id=’${e.feebackBy} >Author: ${e.feebackBy}</li></br>`).join('\n');
+
+						<li id=’${e.feedbackBy} >Author: ${e.feedbackBy}</li><hr>`).join('\n');
 		});
 	} else{
 		window.location.href = "../codes-list/codes-list.html";
@@ -39,8 +40,9 @@ function comment_submit() {
     	codeId=localStorage.getItem("codeId");
     	const comment = document.getElementById("comment");
     	codeId=localStorage.getItem('codeId');
-    	request={"comment":$("#comment").val(), "feebackBy":username};
-    	put("/revieweeCode/"+codeId,request).done(function(data){
+
+    	request={"comment":$("#comment").val(), "feedbackBy":username};
+    	put("revieweeCode/"+codeId,request).done(function(data){
     		alert("Submitted");
     	});
     }

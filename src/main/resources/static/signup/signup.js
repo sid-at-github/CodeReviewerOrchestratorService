@@ -6,7 +6,7 @@
 		else{
 			userData={"username":$("#username").val(),"email":$("#email").val(),"password":$("#password").val()};
 			post("reviewee",userData).done(function(data){
-				alert(data);
+				alert("Sign Up Successful");
 			});
 		}
 }

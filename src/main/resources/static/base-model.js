@@ -1,6 +1,6 @@
 function post(url_path, object){
 var deferred = $.Deferred();
-var url = "http://c16ebeb7.ngrok.io/"+url_path;
+var url = "/"+url_path;
 
 var json = JSON.stringify(object);
 
@@ -22,7 +22,7 @@ return deferred.promise();
 
 function put(url_path, object){
 	var deferred = $.Deferred();
-	var url = "http://c16ebeb7.ngrok.io/"+url_path;
+	var url = "/"+url_path;
 
 	var json = JSON.stringify(object);
 
@@ -45,8 +45,7 @@ function put(url_path, object){
 
 function fetchResponse(url_path){
 var deferred = $.Deferred();
-var url = "http://c16ebeb7.ngrok.io/"+url_path;
-
+var url = "/"+url_path;
 
 var xhr = new XMLHttpRequest();
 xhr.open("GET", url, true);

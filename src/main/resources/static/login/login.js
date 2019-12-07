@@ -9,11 +9,14 @@ function login() {
 		alert("Please enter Username/Password")
 	}
 	else{
-		fetchResponse("reviewee?username="+username+"&password="+password).done(function(data){
+		fetchResponse("reviewee?username="+username+"&password="+password).then(function(data){
 			if(data){
 				localStorage.setItem('username', username);
 				window.location.href = "../home/home.html";
 			}
+
+		},function(data){
+			alert("Wrong username/password");
 		});
 	}
 }
