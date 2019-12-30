@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset ="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Upload Code</title>
+    <link rel="stylesheet" href="review.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"/> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="review.js"></script>
+    <script src="../base-model.js"></script>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="../home/home.html">Home</a>
+  <a href="../upload/upload.html">Upload</a>
+  <a class="active" href="../codes-list/codes-list.html">Review Code Snippets</a>
+  <a href="../login/login.html">Logout</a>
+</div>  
+    <div class="content">
+        <aside class="info ">
+            <div class="box">
+                <p class="title">
+                    <i class="fa fa-info-circle"></i>Code Snippet
+                </p>
+                <form>
+                <div>
+                    <label for="tag">Tags:</label>
+                    <label id="tag" name="tag" class="tags_value"></label>
+                </div>
+                <div>
+                    <label for="title">Title:</label>
+                    <label id="title" name="title" class="title_value"></label>
+                </div>
+                <div>
+                    <label for="author">Author:</label>
+                    <label id="author" name="author" class="author_value"></label>
+                </div>
+                </br>
+                <div>
+                    <label for="code" class="code_label">Code:</label>
+                    <textarea disabled id="code" class="code_value"></textarea>
+                </div>  
+                </form>  
+            </div> 
+        </aside>
+        <aside class="info ">
+            <div class="box">
+                <p class="title">
+                    <i class="fa fa-info-circle"></i>Feedback
+                </p>
+                <form>
+                <div>
+                    <h5 for="comment" class="comment_label">Comment:</h5>
+                    <textarea id="comment" class="comment_value"></textarea>
+                </div> 
+                <div id="lower">
+                    <button type="button" onclick="comment_submit()">Submit</button> 
+                </div>
+            </form>
+            </div>
+            </aside>
+            
+            <aside class="info ">
+            <div class="box">
+            <p class="acc-title" href="#accordion-1">
+                    <i class="fa fa-info-circle"></i>All Comments ->
+                </p></br>
+                <div id="accordion-1" class="accordion-section-content">
+                <ul style="list-style-type: none;" id="comments_list"></ul>
+            </div>
+    		</div>
+    		</br>
+        </aside>
+        </br>
+    </div>
+    <footer>    </footer>
+</body>
+</html>
